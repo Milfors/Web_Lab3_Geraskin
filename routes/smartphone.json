@@ -1,0 +1,53 @@
+{
+
+    "data": [{
+            "id": 1,
+            "name": "Apple",
+            "animal": "8",
+            "color": "grey",
+            "gender": "A11",
+            "img": "https://remax-msk.ru/image/cache/catalog/foto19/2/oad-iblock-8bc-8bc37f92e6f5f001129bf8c42763736d-1000x1000.png"
+        },
+        {
+            "id": 2,
+            "name": "Apple",
+            "animal": "11",
+            "color": "green",
+            "gender": "A13",
+            "img": "https://remax-msk.ru/image/cache/catalog/foto19/1/oad-iblock-ca1-ca1fa49365e8d9a7e0895eeac7fe5d4a-1000x1000.jpg"
+        },
+        {
+            "id": 3,
+            "name": "Apple",
+            "animal": "XR",
+            "color": "white",
+            "gender": "A12",
+            "img": "https://iphoriya.ru/wp-content/uploads/iphone-xr-white.jpg"
+
+        },
+        {
+            "id": 4,
+            "name": "Apple",
+            "animal": "Xs max",
+            "color": "white",
+            "gender": "A12",
+            "img": "https://justalk.ru/pictures/tovar/original/cover_iphone_xr_white_01.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Apple",
+            "animal": "12",
+            "color": "black",
+            "gender": "A14",
+            "img": "https://images.ru.prom.st/666699204_w640_h640_mulyazh-apple-iphone.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Apple",
+            "animal": "4",
+            "color": "white",
+            "gender": "A8",
+            "img": "https://images.ru.prom.st/436949613_w200_h200_smartfon-apple-iphone.jpg"
+        }
+    ]
+}

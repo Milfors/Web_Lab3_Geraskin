@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <title>Smartphones</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        const connect = "http://localhost:3013/search/";
+
+        function start() {
+            getajax();
+        }
+
+        function getajax() {
+            console.log("GET");
+            $.ajax({
+                type: "GET",
+                url: connect + document.getElementById('idGET').value,
+                success: function(msg) {
+                    console.log(msg);
+                    console.log(msg.data);
+                    var i = 0;
+                    document.getElementById('table').innerHTML = "";
+                    while (true) {
+                        try {
+                            var tr = document.createElement("tr");
+                            var did = document.createElement("th");
+                            did.innerHTML = msg.data[i].id;
+                            tr.appendChild(did);
+                            var td = document.createElement("td");
+                            td.innerHTML = msg.data[i].name;
+                            tr.appendChild(td);
+                            td = document.createElement("td");
+                            td.innerHTML = msg.data[i].animal;
+                            tr.appendChild(td);
+                            td = document.createElement("td");
+                            td.innerHTML = msg.data[i].color;
+                            tr.appendChild(td);
+                            td = document.createElement("td");
+                            td.innerHTML = msg.data[i].gender;
+                            tr.appendChild(td);
+                            td = document.createElement("td");
+                            td.innerHTML = msg.data[i].img;
+                            tr.appendChild(td);
+                            document.getElementById('table').appendChild(tr);
+                            i++;
+                        } catch {
+                            break;
+                        }
+                    }
+                }
+            });
+        }
+
+        function postajax() {
+            console.log("POST");
+            if (document.getElementById('idPOST').value == "") {
+                document.getElementById('idPOST').classList.add("is-invalid");
+                return;
+            } else {
+                document.getElementById('idPOST').classList.remove("is-invalid");
+            }
+            var id = parseInt(document.getElementById('idPOST').value);
+            $.ajax({
+                type: "POST",
+                url: connect,
+
+                data: "id=" + id + "&name=" + document.getElementById('namePOST').value + "&animal=" + document.getElementById('animalPOST').value + "&color=" + document.getElementById('colorPOST').value + "&gender=" + document.getElementById('genderPOST').value + "&img=" + document.getElementById('imgPOST').value,
+                success: function(msg) {
+                    console.log(msg);
+                    getajax();
+                }
+            });
+        }
+
+        function putajax() {
+            console.log("PUT");
+            if (document.getElementById('idPUT').value == "") {
+                document.getElementById('idPUT').classList.add("is-invalid");
+                return;
+            } else {
+                document.getElementById('idPUT').classList.remove("is-invalid");
+            }
+            var id = parseInt(document.getElementById('idPUT').value);
+            $.ajax({
+                type: "PUT",
+                url: connect + id,
+
+                data: "id=" + id + "&name=" + document.getElementById('namePUT').value + "&animal=" + document.getElementById('animalPUT').value + "&color=" + document.getElementById('colorPUT').value + "&gender=" + document.getElementById('genderPUT').value + "&img=" + document.getElementById('imgPUT').value,
+                success: function(msg) {
+                    console.log(msg);
+                    getajax();
+                }
+            });
+        }
+
+        function deleteajax() {
+            console.log("DELETE");
+            $.ajax({
+                type: "DELETE",
+                url: connect + document.getElementById('idDELETE').value,
+                success: function(msg) {
+                    console.log(msg);
+                    getajax();
+                }
+            });
+        }
+
+        function methodChanged() {
+            switch (document.getElementById('methods').value) {
+                case '1':
+                    document.getElementById('formGet').style.display = "inline";
+                    document.getElementById('formPost').style.display = "none";
+                    document.getElementById('formPut').style.display = "none";
+                    document.getElementById('formDelete').style.display = "none";
+                    break;
+                case '2':
+                    document.getElementById('formGet').style.display = "none";
+                    document.getElementById('formPost').style.display = "inline";
+                    document.getElementById('formPut').style.display = "none";
+                    document.getElementById('formDelete').style.display = "none";
+                    break;
+                case '3':
+                    document.getElementById('formGet').style.display = "none";
+                    document.getElementById('formPost').style.display = "none";
+                    document.getElementById('formPut').style.display = "inline";
+                    document.getElementById('formDelete').style.display = "none";
+                    break;
+                case '4':
+                    document.getElementById('formGet').style.display = "none";
+                    document.getElementById('formPost').style.display = "none";
+                    document.getElementById('formPut').style.display = "none";
+                    document.getElementById('formDelete').style.display = "inline";
+                    break;
+                default:
+                    document.getElementById('formGet').style.display = "inline";
+                    document.getElementById('formPost').style.display = "none";
+                    document.getElementById('formPut').style.display = "none";
+                    document.getElementById('formDelete').style.display = "none";
+                    break;
+            }
+        }
+    </script>
+    <style>
+        .card {
+            background-color: rgb(170, 98, 98);
+        }
+        
+        .centered {
+            display: grid;
+            justify-content: center;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body style=" background-image: url(https://get.pxhere.com/photo/iphone-smartphone-technology-white-phone-gadget-electronic-brand-product-iphone-6-electronics-call-multimedia-cell-electronic-equipment-cellular-phone-iphone-6-plus-apple-iphone-731508.jpg); background-size: 100%; background-position: top;
+margin: auto;" class="body" onload="getajax()">
+
+
+
+    <div style=" border: 3px solid rgb(41, 25, 25); padding: 10px;  
+    width: 1000px; text-align: center; margin:  2% auto; font: 240%; font-family: fantasy;  border-radius: 20px; font-style: bold; color: #8895b8; font-weight: 900; font-size: 28px;	font-stretch:ultra-expanded; ">Смартфоны</div>
+
+
+
+    <div class="div centered" style="margin: auto; background: #ececec; border-radius: 15px;">
+        <div class="input-group mb-3">
+            <label class="input-group-text" for="inputGroupSelect01">Methods</label>
+            <select class="form-select" id="methods" onchange="methodChanged()">
+      <option selected value="1">GET(for id)</option>
+      <option value="2">POST</option>
+      <option value="3">PUT</option>
+      <option value="4">DELETE</option>
+    </select>
+        </div>
+
+        <div id="formGet">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="idGET" placeholder="1">
+                <label for="idGET">Id</label>
+            </div>
+            <div class="form-floating mb-3" style="text-align: center;">
+                <button class="btn btn-success" style="text-align: center; background: #ececec; border-radius: 15px;" onclick="getajax()">GET</button>
+            </div>
+        </div>
+
+        <div id="formPost" style="display: none;">
+            <div class="form-floating mb-3 required">
+                <input type="number" class="form-control " id="idPOST" placeholder="1">
+                <label for="idPOST">Id</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="namePOST" placeholder="1">
+                <label for="namePOST">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="animalPOST" placeholder="1">
+                <label for="animalPOST">Model</label>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="colorPOST" placeholder="1">
+                    <label for="colorPOST">Color</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="genderPOST" placeholder="1">
+                    <label for="genderPOST">Processor</label>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="imgPOST" placeholder="1">
+                <label for="imgPOST">Url</label>
+            </div>
+            <div class="form-floating mb-3" style="text-align: center;">
+                <button class="btn btn-success" style="text-align: center; background: #ececec; border-radius: 15px;" onclick="postajax()">POST</button>
+            </div>
+        </div>
+
+        <div id="formPut" style="display: none;">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control " id="idPUT" placeholder="1">
+                <label for="idPUT">Id</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="namePUT" placeholder="1">
+                <label for="namePUT">Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="animalPUT" placeholder="1">
+                <label for="animalPUT">Animal</label>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="colorPUT" placeholder="1">
+                    <label for="colorPOST">Color</label>
+                </div>
+            </div>
+            <div class="input-group mb-3">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="genderPUT" placeholder="1">
+                    <label for="genderPOST">Gender</label>
+                </div>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="imgPUT" placeholder="1">
+                <label for="imgPUT">Url</label>
+            </div>
+            <div class="form-floating mb-3" style="text-align: center;">
+                <button class="btn btn-success" style="text-align: center; background: #ececec; border-radius: 15px;" onclick="putajax()">PUT</button>
+            </div>
+        </div>
+
+        <div id="formDelete" style="display: none;">
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" id="idDELETE" placeholder="1">
+                <label for="idGET">Id</label>
+            </div>
+            <div class="form-floating mb-3" style="text-align: center;">
+                <button class="btn btn-success" style="text-align: center; background: #ececec; border-radius: 15px;" onclick="deleteajax()">DELETE</button>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Processor</th>
+                    <th scope="col">Url</th>
+                </tr>
+            </thead>
+            <tbody id="table">
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

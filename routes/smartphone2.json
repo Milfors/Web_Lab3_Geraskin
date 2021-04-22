@@ -1,0 +1,53 @@
+{
+
+    "data": [{
+            "id": 1,
+            "name": "Tom",
+            "animal": "cat",
+            "color": "grey",
+            "gender": "male",
+            "img": "https://imgaz.staticbg.com/customers_avatars/20180930114040_647.jpg"
+        },
+        {
+            "id": 2,
+            "name": "Jerry",
+            "animal": "mouse",
+            "color": "green",
+            "gender": "male",
+            "img": "https://4.bp.blogspot.com/-04sExcprd8w/WCBDcUByZPI/AAAAAAAAEnk/fVrTDSSWvSgkIuZs7QU4NQ6FWcbmU2jYQCLcB/s1600/Capture.JPG"
+        },
+        {
+            "id": 3,
+            "name": "Sharik",
+            "animal": "dog",
+            "color": "brown",
+            "gender": "male",
+            "img": "https://avatars.mds.yandex.net/get-zen_doc/3769427/pub_60357076a332dd737377a1a2_603571cdbd729c71d14308f1/scale_1200"
+
+        },
+        {
+            "id": 4,
+            "name": "Miky",
+            "animal": "dog",
+            "color": "white",
+            "gender": "female",
+            "img": "https://img01.kupiprodai.ru/022019/1564664162546.jpg"
+        },
+        {
+            "id": 5,
+            "name": "Graf",
+            "animal": "cat",
+            "color": "black",
+            "gender": "male",
+            "img": "https://i.pinimg.com/originals/a8/1d/55/a81d55d1fed5cb3248de457df54e1a1b.jpg"
+        },
+        {
+            "id": 6,
+            "name": "Frog",
+            "animal": "dog",
+            "color": "white",
+            "gender": "male",
+            "img": "https://i.artfile.me/wallpaper/30-10-2015/2880x1800/zhivotnye-sobaki-krasavec-pyos-sobaka-982618.jpg"
+        }
+    ]
+}
